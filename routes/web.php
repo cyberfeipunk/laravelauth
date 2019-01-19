@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::group([],function($router){
+   foreach(glob(base_path('routes//app//site').'/*.php') as $file){
+       require($file);
+       app()->make('Routes\\App\\Site\\'.basename($file,'.php'))->map($router);
+   }
+});

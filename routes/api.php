@@ -13,6 +13,14 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+
+
+Route::group([],function($router){
+    foreach(glob(base_path('routes//app//Api').'/*.php') as $file){
+        require ($file);
+        app()->make('Routes\\App\\Api\\'.basename($file,'.php'))->map($router);
+    }
 });
