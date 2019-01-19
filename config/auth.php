@@ -45,6 +45,14 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+        'membersession' =>[
+          'driver' => 'membersessionguard',  //AppServiceProvider中配置的名子
+          'provider' => 'members'  //providers中的名子
+        ],
+        'membertoken' => [
+            'driver' => 'membertokenguard',
+            'provider' => 'members'
+        ]
     ],
 
     /*
@@ -74,6 +82,11 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+        'members' => [
+            'driver' => 'eloqumentmemberprovider',  //AppServiceProvider中配置的服务名
+            'model' => App\Models\MemberAccount::class,
+        ]
     ],
 
     /*

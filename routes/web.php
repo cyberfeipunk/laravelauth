@@ -22,3 +22,7 @@ Route::group([],function($router){
        app()->make('Routes\\App\\Site\\'.basename($file,'.php'))->map($router);
    }
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
